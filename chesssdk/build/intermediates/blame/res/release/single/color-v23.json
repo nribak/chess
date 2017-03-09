@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "/Users/nribak/developer/workspace/Chess/chesssdk/build/intermediates/res/merged/release/color-v23/abc_tint_switch_track.xml",
+        "source": "/Users/nribak/.android/build-cache/593267b023e8c53eb0fe9ad0fe3bfe1f428fa363/output/res/color-v23/abc_tint_switch_track.xml"
+    },
+    {
+        "merged": "/Users/nribak/developer/workspace/Chess/chesssdk/build/intermediates/res/merged/release/color-v23/abc_tint_btn_checkable.xml",
+        "source": "/Users/nribak/.android/build-cache/593267b023e8c53eb0fe9ad0fe3bfe1f428fa363/output/res/color-v23/abc_tint_btn_checkable.xml"
+    },
+    {
+        "merged": "/Users/nribak/developer/workspace/Chess/chesssdk/build/intermediates/res/merged/release/color-v23/abc_tint_default.xml",
+        "source": "/Users/nribak/.android/build-cache/593267b023e8c53eb0fe9ad0fe3bfe1f428fa363/output/res/color-v23/abc_tint_default.xml"
+    },
+    {
+        "merged": "/Users/nribak/developer/workspace/Chess/chesssdk/build/intermediates/res/merged/release/color-v23/abc_tint_switch_thumb.xml",
+        "source": "/Users/nribak/.android/build-cache/593267b023e8c53eb0fe9ad0fe3bfe1f428fa363/output/res/color-v23/abc_tint_switch_thumb.xml"
+    },
+    {
+        "merged": "/Users/nribak/developer/workspace/Chess/chesssdk/build/intermediates/res/merged/release/color-v23/abc_tint_seek_thumb.xml",
+        "source": "/Users/nribak/.android/build-cache/593267b023e8c53eb0fe9ad0fe3bfe1f428fa363/output/res/color-v23/abc_tint_seek_thumb.xml"
+    },
+    {
+        "merged": "/Users/nribak/developer/workspace/Chess/chesssdk/build/intermediates/res/merged/release/color-v23/abc_btn_colored_borderless_text_material.xml",
+        "source": "/Users/nribak/.android/build-cache/593267b023e8c53eb0fe9ad0fe3bfe1f428fa363/output/res/color-v23/abc_btn_colored_borderless_text_material.xml"
+    },
+    {
+        "merged": "/Users/nribak/developer/workspace/Chess/chesssdk/build/intermediates/res/merged/release/color-v23/abc_color_highlight_material.xml",
+        "source": "/Users/nribak/.android/build-cache/593267b023e8c53eb0fe9ad0fe3bfe1f428fa363/output/res/color-v23/abc_color_highlight_material.xml"
+    },
+    {
+        "merged": "/Users/nribak/developer/workspace/Chess/chesssdk/build/intermediates/res/merged/release/color-v23/abc_tint_spinner.xml",
+        "source": "/Users/nribak/.android/build-cache/593267b023e8c53eb0fe9ad0fe3bfe1f428fa363/output/res/color-v23/abc_tint_spinner.xml"
+    },
+    {
+        "merged": "/Users/nribak/developer/workspace/Chess/chesssdk/build/intermediates/res/merged/release/color-v23/abc_tint_edittext.xml",
+        "source": "/Users/nribak/.android/build-cache/593267b023e8c53eb0fe9ad0fe3bfe1f428fa363/output/res/color-v23/abc_tint_edittext.xml"
+    },
+    {
+        "merged": "/Users/nribak/developer/workspace/Chess/chesssdk/build/intermediates/res/merged/release/color-v23/abc_btn_colored_text_material.xml",
+        "source": "/Users/nribak/.android/build-cache/593267b023e8c53eb0fe9ad0fe3bfe1f428fa363/output/res/color-v23/abc_btn_colored_text_material.xml"
+    }
+]

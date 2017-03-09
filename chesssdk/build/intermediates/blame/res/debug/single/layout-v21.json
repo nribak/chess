@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/nribak/developer/workspace/Chess/chesssdk/build/intermediates/res/merged/debug/layout-v21/notification_action_tombstone.xml",
+        "source": "/Users/nribak/.android/build-cache/593267b023e8c53eb0fe9ad0fe3bfe1f428fa363/output/res/layout-v21/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/Users/nribak/developer/workspace/Chess/chesssdk/build/intermediates/res/merged/debug/layout-v21/notification_action.xml",
+        "source": "/Users/nribak/.android/build-cache/593267b023e8c53eb0fe9ad0fe3bfe1f428fa363/output/res/layout-v21/notification_action.xml"
+    },
+    {
+        "merged": "/Users/nribak/developer/workspace/Chess/chesssdk/build/intermediates/res/merged/debug/layout-v21/notification_template_custom_big.xml",
+        "source": "/Users/nribak/.android/build-cache/593267b023e8c53eb0fe9ad0fe3bfe1f428fa363/output/res/layout-v21/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "/Users/nribak/developer/workspace/Chess/chesssdk/build/intermediates/res/merged/debug/layout-v21/notification_template_icon_group.xml",
+        "source": "/Users/nribak/.android/build-cache/593267b023e8c53eb0fe9ad0fe3bfe1f428fa363/output/res/layout-v21/notification_template_icon_group.xml"
+    }
+]

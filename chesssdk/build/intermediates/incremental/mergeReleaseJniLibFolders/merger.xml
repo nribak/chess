@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="/Users/nribak/developer/workspace/Chess/chesssdk/src/main/jniLibs"/></dataSet><dataSet config="release"><source path="/Users/nribak/developer/workspace/Chess/chesssdk/src/release/jniLibs"/></dataSet></merger>

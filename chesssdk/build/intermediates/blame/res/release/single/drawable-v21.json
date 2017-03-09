@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/nribak/developer/workspace/Chess/chesssdk/build/intermediates/res/merged/release/drawable-v21/abc_btn_colored_material.xml",
+        "source": "/Users/nribak/.android/build-cache/593267b023e8c53eb0fe9ad0fe3bfe1f428fa363/output/res/drawable-v21/abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "/Users/nribak/developer/workspace/Chess/chesssdk/build/intermediates/res/merged/release/drawable-v21/abc_action_bar_item_background_material.xml",
+        "source": "/Users/nribak/.android/build-cache/593267b023e8c53eb0fe9ad0fe3bfe1f428fa363/output/res/drawable-v21/abc_action_bar_item_background_material.xml"
+    },
+    {
+        "merged": "/Users/nribak/developer/workspace/Chess/chesssdk/build/intermediates/res/merged/release/drawable-v21/abc_edit_text_material.xml",
+        "source": "/Users/nribak/.android/build-cache/593267b023e8c53eb0fe9ad0fe3bfe1f428fa363/output/res/drawable-v21/abc_edit_text_material.xml"
+    },
+    {
+        "merged": "/Users/nribak/developer/workspace/Chess/chesssdk/build/intermediates/res/merged/release/drawable-v21/notification_action_background.xml",
+        "source": "/Users/nribak/.android/build-cache/593267b023e8c53eb0fe9ad0fe3bfe1f428fa363/output/res/drawable-v21/notification_action_background.xml"
+    }
+]
