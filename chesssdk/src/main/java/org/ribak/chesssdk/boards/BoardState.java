@@ -33,4 +33,15 @@ public enum BoardState {
     public boolean isFinished() {
         return finished;
     }
+
+    public char getStartSign() {
+        switch (this) {
+            case whiteCheck: case blackCheck:
+                return '+';
+            case whiteCheckMate: case blackCheckMate:
+                return '#';
+            default:
+                return ' ';
+        }
+    }
 }

@@ -62,6 +62,10 @@ public class Move {
     @Override
     public String toString() {
         switch (type) {
+            case move:
+                return pieceInPosition.getPiece().getLetter() + toPosition.toString();
+            case attack: case enPassat:
+                return pieceInPosition.getPiece().getLetter() + "x" + toPosition.toString();
             case castleKingSide:
                 return "0-0";
             case castleQueenSide:

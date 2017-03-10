@@ -1,9 +1,10 @@
 package org.ribak.chess.views;
 
+import android.content.ClipData;
 import android.content.Context;
+import android.os.Build;
 import android.support.annotation.DrawableRes;
 import android.util.AttributeSet;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -70,7 +71,16 @@ public class SquareView extends RelativeLayout {
             markImageView.setImageResource(markResId);
     }
 
-    public View getShadowIcon() {
-        return iconImageView;
+    @SuppressWarnings("deprecation")
+    public void startDrag() {
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.N)
+            startDrag(ClipData.newPlainText("", ""), new DragShadowBuilder(iconImageView), this, 0);
+        else
+            startDragAndDrop(ClipData.newPlainText("", ""), new DragShadowBuilder(iconImageView), this, DRAG_FLAG_OPAQUE);
+        iconImageView.setVisibility(INVISIBLE);
+    }
+
+    public void stopDrag() {
+        iconImageView.setVisibility(VISIBLE);
     }
 }

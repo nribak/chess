@@ -50,7 +50,11 @@ public class Board {
      * @param pieceInPosition the piece that wants to move or attack
      * @return a map between the final possible position and the type of move
      */
-    public List<Move> getMovePositions(PieceInPosition pieceInPosition, boolean checkChecks, boolean ignoreTurnColor) {
+    public List<Move> getMovePositions(PieceInPosition pieceInPosition) {
+        return this.getMovePositions(pieceInPosition, true, false);
+    }
+
+    List<Move> getMovePositions(PieceInPosition pieceInPosition, boolean checkChecks, boolean ignoreTurnColor) {
         if(pieceInPosition.isDead())
             return new ArrayList<>();
         if(!ignoreTurnColor && pieceInPosition.isWhite() != whiteTurn)
@@ -191,6 +195,10 @@ public class Board {
         return pieces;
     }
 
+    public boolean isWhiteTurn() {
+        return whiteTurn;
+    }
+
     private boolean isPathBlocked(Path path, boolean white, boolean attack) {
         for (Position position : path.getThroughPositions())
             for (PieceInPosition pieceInPosition : pieces)
@@ -208,11 +216,13 @@ public class Board {
         BoardAnalyzer analyzer = new BoardAnalyzer(this);
         boolean hasCheck = analyzer.hasCheck(whiteTurn); // check if other side is checked
         if(hasCheck) {
-            boardState = (whiteTurn) ? BoardState.blackCheck : BoardState.whiteCheck;
-            for (PieceInPosition piece : pieces) {
-                if(piece.isWhite() == whiteTurn && getMovePositions(piece, true, true).isEmpty())
-                    boardState = (whiteTurn) ? BoardState.blackCheckMate : BoardState.whiteCheckMate;
-            }
+            int movesCount = 0;
+            for (PieceInPosition piece : pieces.getPiecesInColor(whiteTurn))
+                movesCount += getMovePositions(piece, true, true).size();
+            if(movesCount > 0)
+                boardState = (whiteTurn) ? BoardState.blackCheck : BoardState.whiteCheck;
+            else
+                boardState = (whiteTurn) ? BoardState.blackCheckMate : BoardState.whiteCheckMate;
         } else if(analyzer.hasStalemate(whiteTurn))
             boardState = BoardState.staleMate;
         else if(analyzer.hasDraw())

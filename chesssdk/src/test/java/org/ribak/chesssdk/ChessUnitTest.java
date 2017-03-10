@@ -36,7 +36,7 @@ public class ChessUnitTest {
         Assert.assertNotNull(pieceInPosition);
         Assert.assertEquals("Pawn", pieceInPosition.getPiece().getFullName());
 
-        List<Move> pawnPositions = board.getMovePositions(pieceInPosition, true, false);
+        List<Move> pawnPositions = board.getMovePositions(pieceInPosition);
 
         Assert.assertNotNull(pawnPositions);
         Assert.assertEquals(2, pawnPositions.size());

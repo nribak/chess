@@ -15,7 +15,7 @@ public class King extends Piece {
     public static final String NAME = "King";
 
     public King() {
-        super(NAME, "K");
+        super(NAME, 'K');
         moveBehaviours.add(new ForwardDiagonalMoveBehaviour(true));
         moveBehaviours.add(new BackwardDiagonalMoveBehaviour(true));
         moveBehaviours.add(new VerticalMoveBehaviour(true));

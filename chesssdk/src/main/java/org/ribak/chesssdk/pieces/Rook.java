@@ -13,7 +13,7 @@ public class Rook extends Piece {
     public static final String NAME = "Rook";
 
     public Rook() {
-        super(NAME, "R");
+        super(NAME, 'R');
         moveBehaviours.add(new VerticalMoveBehaviour(false));
         moveBehaviours.add(new HorizontalMoveBehaviour(false));
     }

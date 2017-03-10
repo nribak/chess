@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,7 +16,7 @@ import android.widget.Toast;
 import org.ribak.chess.views.BoardView;
 import org.ribak.chesssdk.boards.Board;
 import org.ribak.chesssdk.boards.BoardAnalyzer;
-import org.ribak.chesssdk.boards.initilizers.SimpleBoardInitializer;
+import org.ribak.chesssdk.boards.initilizers.StandardBoardInitializer;
 import org.ribak.chesssdk.exceptions.CheckmateGameException;
 import org.ribak.chesssdk.exceptions.IllegalUndoException;
 import org.ribak.chesssdk.moves.Move;
@@ -27,7 +26,6 @@ import org.ribak.chesssdk.pieces.Piece;
 import org.ribak.chesssdk.positions.Position;
 import org.ribak.chesssdk.positions.Positions;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -49,15 +47,13 @@ public class MainActivity extends AppCompatActivity implements BoardView.OnBoard
 
         boardView = (BoardView) findViewById(R.id.boardView);
         boardView.setOnBoardViewChangedListener(this);
-        board = new Board(new SimpleBoardInitializer(), this);
+        board = new Board(new StandardBoardInitializer(), this);
 
         infoButton = (Button) findViewById(R.id.buttonInfo);
         infoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for (PieceInPosition pieceInPosition : board.getPieces()) {
-                    Log.d("PIECES", pieceInPosition.toString());
-                }
+                Toast.makeText(MainActivity.this, board.getBoardState().name(), Toast.LENGTH_SHORT).show();
             }
         });
         init();
@@ -72,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements BoardView.OnBoard
         }
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerViewMoves);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        adapter = new MovesAdapter(this, R.layout.item_move, new ArrayList<String>());
+        adapter = new MovesAdapter(this, R.layout.item_move);
         recyclerView.setAdapter(adapter);
     }
 
@@ -88,26 +84,27 @@ public class MainActivity extends AppCompatActivity implements BoardView.OnBoard
     }
 
     private void setPieceMovement(Position position,@NonNull PieceInPosition pieceToMove) {
-        List<Move> moves = board.getMovePositions(pieceToMove, true, false);
+        List<Move> moves = board.getMovePositions(pieceToMove);
         PieceIcons.Icons icons = PieceIcons.getPieceIcons(pieceToMove.getPiece());
         Move selectedMove = null;
         for (Move move : moves)
             if(move.getToPosition().equals(position))
                 selectedMove = move;
+        boolean whiteTurn = board.isWhiteTurn();
         if(selectedMove != null)
             switch (selectedMove.getType()) {
                 case move:
                     boardView.setSquare(pieceToMove.getPosition(), 0);
                     boardView.setSquare(position, (pieceToMove.isWhite()) ? icons.getWhiteIcon() : icons.getBlackIcon());
                     boardView.clearMarkings();
-                    adapter.add(board.move(pieceToMove, position).toString());
+                    adapter.add(board.move(pieceToMove, position).toString(), whiteTurn, board.getBoardState());
                     setScores();
                     break;
                 case attack:
                     boardView.setSquare(pieceToMove.getPosition(), 0);
                     boardView.setSquare(position, (pieceToMove.isWhite()) ? icons.getWhiteIcon() : icons.getBlackIcon());
                     boardView.clearMarkings();
-                    adapter.add(board.attack(pieceToMove, position).toString());
+                    adapter.add(board.attack(pieceToMove, position).toString(), whiteTurn, board.getBoardState());
                     setScores();
                     break;
                 case castleKingSide: case castleQueenSide:
@@ -119,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements BoardView.OnBoard
                     boardView.setSquare(castleData.getRookPosition(kingSide), 0);
                     boardView.setSquare(castleData.getRookFinalPosition(kingSide), (pieceToMove.isWhite()) ? rook_icons.getWhiteIcon() : rook_icons.getBlackIcon());
                     boardView.clearMarkings();
-                    adapter.add(board.castle(kingSide).toString());
+                    adapter.add(board.castle(kingSide).toString(), whiteTurn, board.getBoardState());
                     setScores();
                     break;
                 case enPassat:
@@ -128,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements BoardView.OnBoard
                     BoardAnalyzer.EnPassatData enPassatData = BoardAnalyzer.getEnPassatData(pieceToMove.isWhite());
                     boardView.setSquare(Positions.findPosition(enPassatData.getAttackPawnFinalRow(), position.getColumn()), 0);
                     boardView.clearMarkings();
-                    adapter.add(board.enPassat(pieceToMove, position).toString());
+                    adapter.add(board.enPassat(pieceToMove, position).toString(), whiteTurn, board.getBoardState());
                     setScores();
                     break;
             }
@@ -139,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements BoardView.OnBoard
 
     private void listPieceMovements(PieceInPosition pieceInPosition) {
         if(board.isPieceTurn(pieceInPosition)) {
-            List<Move> moves = board.getMovePositions(pieceInPosition, true, false);
+            List<Move> moves = board.getMovePositions(pieceInPosition);
             for (Move move : moves) {
                 MoveType type = move.getType();
                 boardView.addMark(move.getToPosition(), (type.isAttacking()) ? R.drawable.ic_position_attack : R.drawable.ic_position_move);

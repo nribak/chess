@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import org.ribak.chesssdk.boards.BoardState;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,12 +19,13 @@ import java.util.List;
 public class MovesAdapter extends RecyclerView.Adapter<MovesAdapter.ViewHolder> {
     private Context context;
     private int resource;
-    private List<String> moves;
-
-    public MovesAdapter(Context context, int resource, List<String> moves) {
+    private List<String> movesWhite, movesBlack;
+    private boolean whiteLast;
+    public MovesAdapter(Context context, int resource) {
         this.context = context;
         this.resource = resource;
-        this.moves = moves;
+        this.movesWhite = new ArrayList<>();
+        this.movesBlack = new ArrayList<>();
     }
 
     @Override
@@ -31,31 +35,46 @@ public class MovesAdapter extends RecyclerView.Adapter<MovesAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        String move = moves.get(position);
-        holder.textView.setText(move);
+        String whiteMove = (position < movesWhite.size()) ? movesWhite.get(position) : "";
+        String blackMove = (position < movesBlack.size()) ? movesBlack.get(position) : "";
+        holder.textViewWhite.setText(whiteMove);
+        holder.textViewBlack.setText(blackMove);
     }
 
     @Override
     public int getItemCount() {
-        return moves.size();
+        return Math.max(movesWhite.size(), movesBlack.size());
     }
 
-    public void add(String move) {
-        if(move != null)
-            moves.add(move);
-        notifyDataSetChanged();
+    public void add(String move, boolean white, BoardState boardState) {
+
+        if(move != null) {
+            if(white)
+                movesWhite.add(move + boardState.getStartSign());
+            else
+                movesBlack.add(move + boardState.getStartSign());
+            whiteLast = white;
+            notifyDataSetChanged();
+        }
     }
 
     public void removeLast() {
-        moves.remove(moves.size() - 1);
-        notifyDataSetChanged();
+        if(getItemCount() > 0) {
+            if(whiteLast)
+                movesWhite.remove(movesWhite.size() - 1);
+            else
+                movesBlack.remove(movesBlack.size() - 1);
+            whiteLast = !whiteLast;
+            notifyDataSetChanged();
+        }
     }
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView textView;
+        TextView textViewWhite, textViewBlack;
 
         ViewHolder(View itemView) {
             super(itemView);
-            textView = (TextView) itemView.findViewById(R.id.textViewItemMove);
+            textViewWhite = (TextView) itemView.findViewById(R.id.textViewItemMoveWhite);
+            textViewBlack = (TextView) itemView.findViewById(R.id.textViewItemMoveBlack);
         }
     }
 }

@@ -58,8 +58,9 @@ public class Position {
 
     @Override
     public String toString() {
-        return COLUMNS[column] + ":" + (row + 1);
+        String columnString = String.valueOf(COLUMNS[column]);
+        return columnString + (row + 1);
     }
 
-    private static final char[] COLUMNS = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'};
+    private static final char[] COLUMNS = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
 }

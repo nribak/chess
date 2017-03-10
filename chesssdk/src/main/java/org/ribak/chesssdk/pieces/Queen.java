@@ -15,7 +15,7 @@ public class Queen extends Piece {
     public static final String NAME = "Queen";
 
     public Queen() {
-        super(NAME, "Q");
+        super(NAME, 'Q');
         moveBehaviours.add(new BackwardDiagonalMoveBehaviour(false));
         moveBehaviours.add(new ForwardDiagonalMoveBehaviour(false));
         moveBehaviours.add(new HorizontalMoveBehaviour(false));

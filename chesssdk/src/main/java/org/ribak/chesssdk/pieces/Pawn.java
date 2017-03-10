@@ -10,7 +10,7 @@ import org.ribak.chesssdk.exceptions.CheckmateGameException;
 public class Pawn extends Piece {
     public static final String NAME = "Pawn";
     public Pawn() {
-        super(NAME, "");
+        super(NAME, ' ');
         moveBehaviours.add(new PawnMoveBehaviour());
     }
 

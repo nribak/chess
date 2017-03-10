@@ -13,7 +13,7 @@ public class Bishop extends Piece {
     public static final String NAME = "Bishop";
 
     public Bishop() {
-        super(NAME, "B");
+        super(NAME, 'B');
         moveBehaviours.add(new ForwardDiagonalMoveBehaviour(false));
         moveBehaviours.add(new BackwardDiagonalMoveBehaviour(false));
     }

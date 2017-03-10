@@ -14,10 +14,10 @@ import java.util.List;
 
 public abstract class Piece {
     private String fullName;
-    private String letter;
+    private char letter;
     List<IMoveBehaviour> moveBehaviours;
 
-    Piece(String fullName, String letter) {
+    Piece(String fullName, char letter) {
         this.fullName = fullName;
         this.letter = letter;
         this.moveBehaviours = new ArrayList<>();
@@ -27,7 +27,7 @@ public abstract class Piece {
         return fullName;
     }
 
-    public String getLetter() {
+    public char getLetter() {
         return letter;
     }
 
@@ -42,7 +42,7 @@ public abstract class Piece {
         if(this.getClass() != obj.getClass())
             return false;
         Piece rhs = (Piece) obj;
-        return this.letter.equals(rhs.letter);
+        return this.getType() == rhs.getType();
     }
 
     public List<Path> getAllPossibleMovePositions(Position currentPositions, boolean white) {

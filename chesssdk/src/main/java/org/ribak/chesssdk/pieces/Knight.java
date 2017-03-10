@@ -12,7 +12,7 @@ public class Knight extends Piece {
     public static final String NAME = "Knight";
 
     public Knight() {
-        super(NAME, "Kn");
+        super(NAME, 'N');
         moveBehaviours.add(new KnightMoveBehaviour());
     }
 
